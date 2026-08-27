@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhlakanipho ❤️</title>
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #ff003c, #ff4f81, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.container {
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    padding: 50px 30px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 2;
+}
+
+.heart-icon {
+    font-size: 70px;
+    animation: heartbeat 1.2s infinite;
+}
+
+h1 {
+    font-size: 55px;
+    font-weight: 900;
+    margin-top: 10px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    font-size: 42px;
+    font-weight: 900;
+    margin: 10px 0 25px;
+}
+
+.message {
+    font-size: 19px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.question-box {
+    background: #ffffff;
+    color: #ff174f;
+    padding: 30px 20px;
+    border-radius: 25px;
+}
+
+.question-box h3 {
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    padding: 16px 25px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.yes-btn {
+    background: #ff174f;
+    color: white;
+    box-shadow: 0 8px 20px rgba(255, 23, 79, 0.4);
+}
+
+.yes-btn:hover {
+    transform: scale(1.1);
+    background: #d9003f;
+}
+
+.no-btn {
+    background: #eeeeee;
+    color: #555;
+    position: relative;
+}
+
+#response {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 25px;
+    min-height: 35px;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+/* Floating hearts */
+
+.hearts::before,
+.hearts::after {
+    content: "❤️ 💕 💗 💖 💓 ❤️ 💕";
+    position: absolute;
+    font-size: 30px;
+    width: 100%;
+    animation: floatingHearts 10s linear infinite;
+    opacity: 0.7;
+}
+
+.hearts::before {
+    top: 100%;
+    left: 5%;
+}
+
+.hearts::after {
+    top: 100%;
+    left: 55%;
+    animation-delay: 4s;
+}
+
+@keyframes heartbeat {
+
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.2);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+
+    60% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes floatingHearts {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-120vh);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .message {
+        font-size: 16px;
+    }
+
+    .question-box h3 {
+        font-size: 20px;
+    }
+
+    .container {
+        padding: 35px 20px;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="hearts"></div>
+
+    <main class="container">
+
+        <div class="heart-icon">❤️</div>
+
+        <h1>Nhlakanipho...</h1>
+
+        <h2>I LOVE YOU ❤️</h2>
+
+        <p class="message">
+            Okay... maybe things got complicated. 😭
+            <br>
+            But before you officially run away...
+            <br>
+            I have ONE very important question.
+        </p>
+
+        <div class="question-box">
+            <h3>Do you still want to be with me? 🥺❤️</h3>
+
+            <div class="buttons">
+
+                <button class="yes-btn" onclick="yesClicked()">
+                    I LOVE YOU TOO,Please Unblock me ❤️
+                </button>
+
+                <button class="no-btn" id="noButton">
+                    NO, IT'S OVER, Please Unblock me😭
+                </button>
+
+            </div>
+        </div>
+
+        <p id="response"></p>
+
+        <div class="footer">
+            Made with ❤️,  hurt and in need of your love 
+        </div>
+
+    </main>
+
+    <script>
+        const noButton = document.getElementById("noButton");
+const response = document.getElementById("response");
+
+noButton.addEventListener("mouseover", moveButton);
+
+noButton.addEventListener("touchstart", moveButton);
+
+function moveButton() {
+
+    const maxX = window.innerWidth - noButton.offsetWidth - 20;
+    const maxY = window.innerHeight - noButton.offsetHeight - 20;
+
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+
+    noButton.style.position = "fixed";
+    noButton.style.left = randomX + "px";
+    noButton.style.top = randomY + "px";
+}
+
+function yesClicked() {
+
+    response.innerHTML =
+        "I KNEW IT! 😭❤️😂 <br> Please Call me Baba!";
+
+    document.querySelector(".yes-btn").innerHTML =
+        "YAYYYY ❤️❤️❤️";
+
+    createHearts();
+}
+
+function createHearts() {
+
+    for (let i = 0; i < 30; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.innerHTML = "❤️";
+
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.fontSize = Math.random() * 25 + 20 + "px";
+        heart.style.zIndex = "999";
+
+        document.body.appendChild(heart);
+
+        heart.animate(
+            [
+                {
+                    transform: "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+                {
+                    transform: `translateY(-${window.innerHeight + 200}px) rotate(360deg)`,
+                    opacity: 0
+                }
+            ],
+            {
+                duration: 3000 + Math.random() * 3000,
+                easing: "ease-out"
+            }
+        );
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+    }
+    </script>
+
+</body>
+</html>
